@@ -8,12 +8,27 @@ extends RigidBody
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_linear_velocity(Vector3(0,0,5.0))
+	var rand = RandomNumberGenerator.new()
+	rand.randomize()
+	var vel_x = rand.randf_range(-1.0,1.0)
+	var vel_y = rand.randf_range(-1.0,1.0)
+	set_linear_velocity(Vector3(vel_x, vel_y, 5.0))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(global_transform.origin.z)
-	if global_transform.origin.z >= 5:
+	if global_transform.origin.z >= 1.1:
 		print("Out of Bounds")
 		queue_free()
+
+
+func _on_Area_body_entered(body):
+	if body is StaticBody:
+		pass
+		queue_free()
+	if body is KinematicBody:
+		print("Spaceship hit")
+		body.queue_free()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#body.queue_free()

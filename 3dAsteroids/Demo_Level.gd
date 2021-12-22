@@ -22,7 +22,7 @@ func _ready():
 	]
 	var spawner
 	for p in positions:
-		print(p)
+		#print(p)
 		spawner = rock.instance()
 		spawner.global_transform = p.global_transform
 		add_child(spawner)
@@ -37,7 +37,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	rounds += 1
-	print(rounds)
+	#print(rounds)
 func _spawn_new_asteroid():
 	var positions = [
 	$Position3D, $Position3D2, $Position3D3, 
@@ -49,4 +49,5 @@ func _spawn_new_asteroid():
 	spawner.global_transform = positions[rand.randi_range(0,8)].global_transform
 	add_child(spawner)
 	timer.set_wait_time(5 - rounds/100)
+	#print("Timer : ", 5-rounds/10000)
 	timer.start()
