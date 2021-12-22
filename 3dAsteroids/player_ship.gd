@@ -10,21 +10,28 @@ var vel = Vector3()
 var blast = preload("res://laser_blast_basic.tscn")
 var fired_blast
 var targeted_asteroid
+var ammo = 20
 var timer = Timer.new()
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	
-	timer.connect("timeout", self, "_fire")
+	timer.connect("timeout", self, "_reload")
 	add_child(timer)
-	timer.set_wait_time(0.5)
+	timer.set_wait_time(1)
 	timer.start()
 
+func _reload():
+	if ammo < 20:
+		ammo += 1
+
 func _fire():
-	fired_blast = blast.instance()
-	fired_blast.global_transform.origin = $Position3D.global_transform.origin
-	
-	get_parent().add_child(fired_blast)
-	timer.set_wait_time(0.5)
+	if ammo > 0:
+		ammo -= 1
+		fired_blast = blast.instance()
+		fired_blast.global_transform.origin = $Position3D.global_transform.origin
+		
+		get_parent().add_child(fired_blast)
+	timer.set_wait_time(0.25)
 	#print("Timer : ", 5-rounds/10000)
 	timer.start()
 
@@ -38,15 +45,18 @@ func _process(delta):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 			
-#	if Input.is_action_just_pressed("fire"):
-#
-#
-#		fired_blast = blast.instance()
-#
-#
-#		fired_blast.global_transform.origin = $Position3D.transform.origin
-#
-#		add_child(fired_blast)
+	if Input.is_action_just_pressed("fire"):
+
+
+		fired_blast = blast.instance()
+
+
+		fired_blast.global_transform.origin = $Position3D.transform.origin
+
+		add_child(fired_blast)
+		
+	if Input.is_action_pressed("fire"):
+		_fire()
 		
 	
 		

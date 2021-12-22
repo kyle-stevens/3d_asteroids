@@ -70,3 +70,29 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="RichTextLabel" parent="UI"]
+margin_left = 31.0
+margin_top = 25.0
+margin_right = 114.0
+margin_bottom = 65.0
+text = "0000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ammo" type="RichTextLabel" parent="UI"]
+margin_left = 12.0
+margin_top = 547.0
+margin_right = 226.0
+margin_bottom = 587.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
