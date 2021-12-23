@@ -25,7 +25,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(global_transform.origin.z)
-	if global_transform.origin.z >= 1.1:
+	if global_transform.origin.z >= 4:
 		print("Out of Bounds")
 		queue_free()
 	

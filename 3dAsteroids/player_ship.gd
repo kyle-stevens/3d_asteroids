@@ -28,7 +28,9 @@ func _fire():
 	if ammo > 0:
 		ammo -= 1
 		fired_blast = blast.instance()
+		
 		fired_blast.global_transform.origin = $Position3D.global_transform.origin
+		
 		
 		get_parent().add_child(fired_blast)
 	timer.set_wait_time(0.25)
@@ -48,15 +50,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("fire"):
 
 
-		fired_blast = blast.instance()
-
-
-		fired_blast.global_transform.origin = $Position3D.transform.origin
-
-		add_child(fired_blast)
-		
-	if Input.is_action_pressed("fire"):
 		_fire()
+		
 		
 	
 		
@@ -70,7 +65,7 @@ func _process(delta):
 	
 	
 	transform.origin = transform.origin.linear_interpolate(
-		Vector3((position3D.x - transform.origin.x) * 2, (position3D.y - transform.origin.y) * 2, 0), 
+		Vector3((position3D.x - transform.origin.x) * 2, (position3D.y - transform.origin.y) * 2, 2), 
 		delta
 		)
 	

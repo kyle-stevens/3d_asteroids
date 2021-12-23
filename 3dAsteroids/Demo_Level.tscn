@@ -22,8 +22,7 @@ background_mode = 2
 background_sky = SubResource( 1 )
 background_sky_orientation = Basis( 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1 )
 background_energy = 0.83
-ambient_light_color = Color( 0.282353, 0.843137, 0.933333, 1 )
-ambient_light_energy = 2.0
+ambient_light_color = Color( 1, 1, 1, 1 )
 fog_color = Color( 0, 0, 0, 1 )
 fog_sun_color = Color( 1, 1, 1, 1 )
 auto_exposure_enabled = true
@@ -66,7 +65,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -20 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, -20 )
 
 [node name="player_ship" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 1 )
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 2 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
